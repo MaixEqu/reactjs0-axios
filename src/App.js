@@ -7,7 +7,7 @@ export class Main extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <div>[ Learn React (Mx, ver 0.1.11, J214) ]</div>
+          <div>[ Learn React (Mx, ver 0.1.12, J214) ]</div>
           <div id="res">results here...</div>
         </header>
       </div>
@@ -50,14 +50,17 @@ export class PersonList extends React.Component {
       .then((response) => response.text())
       .then((responseJson) => {
         console.log("Mx0+>>\n" + sObj(responseJsonL));
-        console.log("Mx2+>>\n" + sObj(responseJson));
+        console.log("Mx2+>>\n" + sObj(responseJson.split("\r\n")));
         //const persons = (responseJson) ? responseJson.movies[2].title : "no 'responseJson'"; 
         const persons = (responseJson) ? responseJson : "no 'responseJson'"; 
         console.log("Mx1>> " + persons);
-        //const persons2 = (responseJsonL) ? responseJsonL.movies[2].title : "no 'responseJsonL'"; 
-        this.setState({ persons });
+        //const persons2 = (responseJsonL) ? responseJsonL.movies[2].title : "no 'responseJsonL'";
+        // persons.replace("\n", "<br />");
+        this.setState({ persons: persons.split("\r") });
         //return responseJson.movies;
       })
+      //         this.setState({ persons: persons.replace(/\n/g, "+ ") });
+
       .catch((error) => {
         console.error(error);
       });
@@ -73,13 +76,15 @@ export class PersonList extends React.Component {
 
   render() {
     // console.log(this.state.data)
-    const sDate = (this.state && 'persons' in this.state) ? this.state.persons : "no data"
+    const sData = (this.state && 'persons' in this.state) ? this.state.persons : "no data"
+    //const aData = sData.split("\n");
     return (
-      <ul>data: {sDate}
-      </ul>
+      <div>data: {sData} )</div>
     )
   }
 }
+/*       <div>data: {sData.map( function(row) { return row} )</div></div>
+
 //         { this.state.persons.map(person => <li key="2">{person.name}</li>)}
 /*
 function getMoviesFromApiAsync() {
