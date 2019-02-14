@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
-import responseJsonL from './2/movies.txt'
+import responseJsonL from './2/movies2.txt'
 
 export class Main extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <div>[ Learn React (Mx, ver 0.1.10, J214) ]</div>
+          <div>[ Learn React (Mx, ver 0.1.11, J214) ]</div>
           <div id="res">results here...</div>
         </header>
       </div>
@@ -47,13 +47,14 @@ export class PersonList extends React.Component {
     fetch('http://localhost:3000' + responseJsonL)
     //fetch('https://facebook.github.io/react-native/movies.json')
     //fetch('./movies.json')
-      .then((response) => response.json())
+      .then((response) => response.text())
       .then((responseJson) => {
         console.log("Mx0+>>\n" + sObj(responseJsonL));
         console.log("Mx2+>>\n" + sObj(responseJson));
-        const persons = (responseJson) ? responseJson.movies[2].title : "no 'responseJson'"; 
+        //const persons = (responseJson) ? responseJson.movies[2].title : "no 'responseJson'"; 
+        const persons = (responseJson) ? responseJson : "no 'responseJson'"; 
         console.log("Mx1>> " + persons);
-        const persons2 = (responseJsonL) ? responseJsonL.movies[2].title : "no 'responseJsonL'"; 
+        //const persons2 = (responseJsonL) ? responseJsonL.movies[2].title : "no 'responseJsonL'"; 
         this.setState({ persons });
         //return responseJson.movies;
       })

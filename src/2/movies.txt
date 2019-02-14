@@ -1,3 +1,24 @@
 {
 "1": "hus [aʁys]/Aarhus [aʁys]"
 }
+
+Aarhus [aʁys]
+Aaron [aʁɔ̃n]
+Aarschot [aʁsʃɔt]
+Abbeville [abvil]
+Abd [abd]
+Abdelkader [abdɛlkadɛʁ]
+Abel [abɛl]
+Abidjan [abidʒɑ̃]
+Abitibi-Témiscamingue [abitibitemiskamɛ̃ɡ]
+Abkhazie [abkazi]
+Abraham [abʁaam]
+Abu [abu]
+Abuja [abuʒa]
+Abymes [abim]
+Abyssinie [abisini]
+Acadie [akadi]
+Acapulco [akapulko]
+Accra [akʁa]
+Achaïe [akai]
+
