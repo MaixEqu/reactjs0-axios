@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
-import responseJsonL from './2/movies2.txt'
+//import responseJsonL from './2/movies2.json';
+import responseJsonL from './2/movies2.txt';
 
 export class Main extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <div>[ Learn React (Mx, ver 0.1.12, J214) ]</div>
+          <div>[ Learn React (Mx, ver 0.1.13, J214) ]</div>
           <div id="res">results here...</div>
         </header>
       </div>
@@ -44,26 +45,37 @@ export class PersonList extends React.Component {
     */
     // + fetch('https://facebook.github.io/react-native/movies.json')
     //+fetch('http://localhost:3000/static/media/movies.301eeaa2.txt')
-    fetch('http://localhost:3000' + responseJsonL)
+    //!++ fetch('http://localhost:3000' + responseJsonL)
     //fetch('https://facebook.github.io/react-native/movies.json')
     //fetch('./movies.json')
-      .then((response) => response.text())
-      .then((responseJson) => {
-        console.log("Mx0+>>\n" + sObj(responseJsonL));
-        console.log("Mx2+>>\n" + sObj(responseJson.split("\r\n")));
-        //const persons = (responseJson) ? responseJson.movies[2].title : "no 'responseJson'"; 
-        const persons = (responseJson) ? responseJson : "no 'responseJson'"; 
-        console.log("Mx1>> " + persons);
-        //const persons2 = (responseJsonL) ? responseJsonL.movies[2].title : "no 'responseJsonL'";
-        // persons.replace("\n", "<br />");
-        this.setState({ persons: persons.split("\r") });
-        //return responseJson.movies;
-      })
-      //         this.setState({ persons: persons.replace(/\n/g, "+ ") });
+    console.log("Mx6: " + typeof(responseJson));
+    console.log("Mx8: " + sObj(responseJsonL["abbé"]));
+    console.log("Mx9: " + sObj(responseJsonL["abcès"]));
+    //console.log("Mx7>>\n" + sObj(responseJsonL));
+    if (typeof(responseJsonL) == 'string') {
+      fetch('http://localhost:3000' + responseJsonL)
+        .then((response) => response.text())
+        .then((responseJson) => {
+          //console.log("Mx0+>>\n" + sObj(responseJsonL));
+          //console.log("Mx2+>>\n" + sObj(responseJson.split("\r\n")));
+          //const persons = (responseJson) ? responseJson.movies[2].title : "no 'responseJson'"; 
+          const persons = (responseJson) ? responseJson : "no 'responseJson'"; 
+          //console.log("Mx1>> " + persons);
+          //const persons2 = (responseJsonL) ? responseJsonL.movies[2].title : "no 'responseJsonL'";
+          // persons.replace("\n", "<br />");
+          this.setState({ persons: persons.split("\r") });
+          console.log("data file is text.")
+          //return responseJson.movies;
+        })
+        //         this.setState({ persons: persons.replace(/\n/g, "+ ") });
 
-      .catch((error) => {
-        console.error(error);
-      });
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      console.log("data file isn't text type.")
+      this.setState({ persons: sObj(responseJsonL) });
+    }
   }
 /*
     .then((response) => {
