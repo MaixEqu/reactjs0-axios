@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import responseJsonL from './2/movies.txt'
 
 export class Main extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <div>[ Learn React (Mx, ver 0.1.8, J214) ]</div>
+          <div>[ Learn React (Mx, ver 0.1.9, J214) ]</div>
           <div id="res">results here...</div>
         </header>
       </div>
@@ -41,20 +42,32 @@ export class PersonList extends React.Component {
         this.setState({ persons });
       })
     */
+    // + fetch('https://facebook.github.io/react-native/movies.json')
+    // fetch('http://localhost:3000/movies.json')
     fetch('https://facebook.github.io/react-native/movies.json')
-        .then((response) => response.json())
-        .then((responseJson) => {
-            console.log("Mx2>>\n" + sObj(responseJson));
-            const persons = responseJson.movies[2].title;
-            console.log("Mx1>> " + persons);
-            this.setState({ persons });
-          //return responseJson.movies;
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+    //fetch('./movies.json')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        console.log("Mx0>>\n" + sObj(responseJsonL));
+        //console.log("Mx2>>\n" + sObj(responseJson));
+        //const persons = (responseJson) ? responseJson.movies[2].title : "no 'responseJson'"; 
+        //console.log("Mx1>> " + persons);
+        const persons = (responseJsonL) ? responseJsonL.movies[2].title : "no 'responseJsonL'"; 
+        this.setState({ persons });
+        //return responseJson.movies;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
-  
+/*
+    .then((response) => {
+            console.log("Mx1>>\n" + sObj(response));
+            response.json()
+        }
+        ) //response.json())
+
+*/  
 
   render() {
     // console.log(this.state.data)
@@ -66,7 +79,7 @@ export class PersonList extends React.Component {
   }
 }
 //         { this.state.persons.map(person => <li key="2">{person.name}</li>)}
-
+/*
 function getMoviesFromApiAsync() {
   return fetch('https://facebook.github.io/react-native/movies.json')
     .then((response) => response.json())
@@ -78,3 +91,4 @@ function getMoviesFromApiAsync() {
     });
 }
 
+*/
