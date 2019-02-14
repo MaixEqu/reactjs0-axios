@@ -7,7 +7,7 @@ export class Main extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <div>[ Learn React (Mx, ver 0.1.9, J214) ]</div>
+          <div>[ Learn React (Mx, ver 0.1.10, J214) ]</div>
           <div id="res">results here...</div>
         </header>
       </div>
@@ -43,16 +43,17 @@ export class PersonList extends React.Component {
       })
     */
     // + fetch('https://facebook.github.io/react-native/movies.json')
-    // fetch('http://localhost:3000/movies.json')
-    fetch('https://facebook.github.io/react-native/movies.json')
+    //+fetch('http://localhost:3000/static/media/movies.301eeaa2.txt')
+    fetch('http://localhost:3000' + responseJsonL)
+    //fetch('https://facebook.github.io/react-native/movies.json')
     //fetch('./movies.json')
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log("Mx0>>\n" + sObj(responseJsonL));
-        //console.log("Mx2>>\n" + sObj(responseJson));
-        //const persons = (responseJson) ? responseJson.movies[2].title : "no 'responseJson'"; 
-        //console.log("Mx1>> " + persons);
-        const persons = (responseJsonL) ? responseJsonL.movies[2].title : "no 'responseJsonL'"; 
+        console.log("Mx0+>>\n" + sObj(responseJsonL));
+        console.log("Mx2+>>\n" + sObj(responseJson));
+        const persons = (responseJson) ? responseJson.movies[2].title : "no 'responseJson'"; 
+        console.log("Mx1>> " + persons);
+        const persons2 = (responseJsonL) ? responseJsonL.movies[2].title : "no 'responseJsonL'"; 
         this.setState({ persons });
         //return responseJson.movies;
       })
